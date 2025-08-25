@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biodata Ku</title>
+    <style>
+      :root {
+        --bg-dark: #0a0f1f; /* hitam kebiruan */
+        --bg-blue: #0f4c75; /* biru elegan */
+        --card: rgba(17, 24, 39, 0.7);
+        --muted: #94a3b8;
+        --text: #e5e7eb;
+        --accent: #22d3ee;
+        --ring: rgba(34, 211, 238, 0.25);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, var(--bg-dark), var(--bg-blue));
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+      }
+      .card {
+        width: min(420px, 100%);
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+        padding: 28px;
+        text-align: center;
+        animation: fadeIn 0.9s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: url("c:/Users/LENOVO/Downloads/WhatsApp_Image_2025-08-19_at_16.13.39_201ab49a-removebg-preview.png")
+          center/cover no-repeat;
+        margin: 0 auto 16px;
+        border: 3px solid var(--accent);
+        box-shadow: 0 0 25px rgba(34, 211, 238, 0.5);
+      }
+      h1 {
+        margin: 10px 0 5px;
+        font-size: 26px;
+      }
+      p.subtitle {
+        font-size: 14px;
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+      .info {
+        text-align: left;
+        margin-top: 10px;
+      }
+      .row {
+        margin-bottom: 14px;
+      }
+      .label {
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+      .value {
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        font-size: 15px;
+      }
+      .value a {
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--accent);
+      }
+      .value a:hover {
+        color: var(--accent);
+      }
+      .footer {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        border-radius: 999px;
+        padding: 10px 16px;
+        font-weight: 600;
+        background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+        color: #0b1220;
+        box-shadow: 0 6px 18px var(--ring);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px var(--ring);
+      }
+      button.secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="avatar"></div>
+      <h1>M Jhuve</h1>
+      <p class="subtitle">Siswa SMK 6 JEMBER</p>
+
+      <div class="info">
+        <div class="row">
+          <div class="label">Umur</div>
+          <div class="value">17 Tahun</div>
+        </div>
+        <div class="row">
+          <div class="label">Asal Sekolah</div>
+          <div class="value">SMK Negeri 6 Jember</div>
+        </div>
+        <div class="row">
+          <div class="label">Alamat</div>
+          <div class="value">Tanggul Kulon</div>
+        </div>
+        <div class="row">
+          <div class="label">Email</div>
+          <div class="value">
+            <a href="mailto:jhuvedavasyah@gmail.com">jhuvedavasyah@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <button onclick="window.print()">Cetak</button>
+        <button class="secondary" onclick="downloadHTML()">Unduh</button>
+      </div>
+    </main>
+
+    <script>
+      function downloadHTML() {
+        const blob = new Blob([document.documentElement.outerHTML], {
+          type: "text/html",
+        });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "biodata-ku.html";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(a.href);
+      }
+    </script>
+  </body>
+</html>
